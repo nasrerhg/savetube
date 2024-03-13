@@ -2,7 +2,7 @@ function videoDataExtractor(infoObject) {
     let videoData = {};
     videoData.title = infoObject.videoDetails.title
     videoData.duration = infoObject.videoDetails.lengthSeconds
-    videoData.thumbnail = infoObject.videoDetails.thumbnails.at(-1).url
+    videoData.thumbnail = infoObject.videoDetails.thumbnails[thumbnails.length - 1].url
 
     videoData.formats = {}
     videoData.formats.audioVideo = []
