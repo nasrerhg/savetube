@@ -3,7 +3,7 @@ const https = require("https")
 const {env} = require("process")
 const ytdl = require('ytdl-core');
 const { videoDataExtractor } = require("./custom_modules/video-data-extractor.js")
-const EventEmiter = require("node:events");
+const EventEmiter = require("events");
 const cors = require('cors'); // Include cors middleware
 
 // disabling updates for the ytdl-core module 
