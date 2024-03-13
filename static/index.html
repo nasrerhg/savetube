@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SaveTube - download youtube videos with one click !</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <!-- google fonts poppins regular 400-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">save<span>tube</span></div>
+    </nav>
+    <section>
+      <div class="search-bar-container">
+        <div class="search-bar">
+          <input type="text" placeholder="Enter youtube video url" />
+          <div class="btn-search">
+            <img src="/static/assets/icons/icon-search.png" alt="" />
+          </div>
+        </div>
+        <div class="pop-up">
+          <div class="error pop-up-card hidden">
+            <p>Video was not found !</p>
+          </div>
+          <div class="in-progress pop-up-card hidden">
+            <div class="loading">
+              <div class="rect"></div>
+              <div class="rect"></div>
+              <div class="rect"></div>
+              <div class="rect"></div>
+            </div>
+            <p>searching...</p>
+          </div>
+        </div>
+      </div>
+      <div class="card card-select-format hidden">
+        <div class="card-header">
+          <div class="card-title">setect video format</div>
+          <div class="return">
+            <img src="./assets/icons/icon-back.png" alt="" />
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="video-data">
+            <div class="thumbnail">
+              <img src="./assets/no-image.png" alt="" />
+            </div>
+            <div class="title-duration">
+              <div class="title">title : <span>unknown</span></div>
+              <div class="duration">duration : <span>unknown</span></div>
+            </div>
+          </div>
+          <div class="video-formats">
+            <div class="cta">choose format :</div>
+            <div class="btns">
+              <div class="btn mp3-btn">mp3</div>
+              <div class="btn mp4-btn">mp4</div>
+            </div>
+          </div>
+          <div class="drop-down-menu mp4-list hidden">
+            <!-- formats added by javascript -->
+          </div>
+          <div class="drop-down-menu mp3-list hidden">
+            <!-- formats added by javascript -->
+          </div>
+        </div>
+      </div>
+      <!-- card for the downloading.. process -->
+      <div class="card card-downloading hidden">
+        <div class="card-header">
+          <div class="card-title">setect video format</div>
+          <div class="return">
+            <img src="./assets/icons/icon-back.png" alt="" />
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="video-data">
+            <div class="thumbnail">
+              <img src="./assets/no-image.png" alt="" />
+            </div>
+            <div class="title-duration">
+              <div class="title">title : <span>unknown</span></div>
+              <div class="duration">duration : <span>0:00</span></div>
+              <div class="file-details">
+                <span class="quatlity">unknown</span>
+                <span class="resolution">unknown</span>
+                <span class="extension">unknown</span>
+              </div>
+            </div>
+          </div>
+          <div class="download-progress-bar">
+            <div class="downloaded-size-ratio">
+              <span class="downloaded-part-size">
+                <span>0</span>
+                MB </span
+              >/
+              <span class="full-file-size">
+                <span>0</span>
+                MB
+              </span>
+            </div>
+            <div class="progress-bar">
+              <span class="percentage-level-text">0%</span>
+              <div class="percentage-level"></div>
+            </div>
+            <a class="btn-download-file hidden" download>download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

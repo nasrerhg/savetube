@@ -1,0 +1,456 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /*------ colors ------*/
+    --bg-clr-primary: #0f0f0f;
+    --bg-clr-secondary: #3c3c3c;
+    --bg-clr-third: #5e5e5e;
+    /*------ logo colors ------*/
+    --text-clr-primary: white;
+    --text-clr-secondary: #fd0000;
+    /*------ fonts family ------*/
+    --ff-primary: "Poppins", sans-serif;
+    /*------ loading animation rects delay ------*/
+    --rects-delay: .08s;
+    /*------ choose file extension btns (mp3 or mp4) --------*/
+    /* normal state */
+    --btn-mp4-normal-state: hsl(0, 100%, 41%);
+    --btn-mp3-normal-state: hsl(130, 100%, 41%);
+    /* active state */
+    --btn-mp4-active-state: hsl(0, 50%, 41%);
+    --btn-mp3-active-state: hsl(130, 50%, 41%);
+    /*------ choose quality of the file   --------*/
+    /* normal state */
+    --btn-download-format-normal-state: hsl(110, 50%, 34%);
+    /* active state */
+    --btn-download-format-active-state: hsl(110, 100%, 34%);
+    /*------ download file btn --------*/
+    --btn-download-file-normal-state: hsl(110, 100%, 34%);
+    --btn-download-file-active-state: hsl(110, 50%, 34%);
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+input {
+    outline: none;
+    border: none;
+    font-size: 1em;
+}
+
+body {
+    background-color: var(--bg-clr-primary);
+    font-family: var(--ff-primary);
+    color: var(--text-clr-primary);
+}
+
+nav {
+    padding: .5em 1em;
+    background-color: var(--bg-clr-secondary);
+}
+
+nav .logo {
+    font-size: 2em;
+    color: var(--text-clr-primary);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+nav .logo span {
+    color: var(--text-clr-secondary);
+}
+
+section {
+    padding-top: 10em;
+    padding-bottom: 1em;
+}
+
+section .search-bar-container {
+    width: 90vw;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 50px;
+    position: relative;
+    min-width: max-content;
+}
+
+section .search-bar-container .search-bar {
+    border: solid 2px var(--bg-clr-third);
+    background-color: var(--bg-clr-secondary);
+    height: 100%;
+    display: flex;
+    border-radius: .7em .7em 0 0;
+    overflow: hidden;
+}
+
+section .search-bar-container .search-bar input {
+    height: 100%;
+    flex-grow: 1;
+    padding: .25em .5em;
+    font-size: 1.2em;
+}
+
+section .search-bar-container .search-bar .btn-search {
+    width: 10%;
+    max-width: 80px;
+    min-width: max-content;
+    display: flex;
+    justify-content: center;
+    padding-inline: .5em;
+    cursor: pointer;
+    transition: background-color .15s ease-out;
+}
+
+section .search-bar-container .search-bar .btn-search:active {
+    background-color: var(--bg-clr-third);
+}
+
+section .search-bar-container .search-bar .btn-search img {
+    height: 100%;
+}
+
+section .pop-up {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+section .search-bar-container .pop-up .pop-up-card {
+    padding: .5em 1em;
+    border-radius: 0 0 .7em .7em;
+}
+
+section .search-bar-container .pop-up .error {
+    background-color: #fd0000;
+    text-align: center;
+}
+
+section .search-bar-container .pop-up .in-progress {
+    padding: 1em 0;
+    background-color: var(--bg-clr-secondary);
+}
+
+section .search-bar-container .pop-up .in-progress .loading {
+    /* border: solid 1px red; */
+    width: 100px;
+    height: 50px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+section .search-bar-container .pop-up .in-progress .loading .rect {
+    height: 100%;
+    width: 20%;
+    background-color: white;
+    transform: scaleY(.5);
+    animation: loading .5s ease-out none infinite;
+}
+
+section .search-bar-container .pop-up .in-progress .loading .rect:nth-child(1) {
+    animation-delay: calc(var(--rects-delay) * 0);
+}
+
+section .search-bar-container .pop-up .in-progress .loading .rect:nth-child(2) {
+    animation-delay: calc(var(--rects-delay) * 1);
+}
+
+section .search-bar-container .pop-up .in-progress .loading .rect:nth-child(3) {
+    animation-delay: calc(var(--rects-delay) * 2);
+}
+
+section .search-bar-container .pop-up .in-progress .loading .rect:nth-child(4) {
+    animation-delay: calc(var(--rects-delay) * 3);
+}
+
+@keyframes loading {
+    0% {
+        transform: scaleY(.5);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(.5);
+    }
+}
+
+section .search-bar-container .pop-up .in-progress p {
+    text-align: center;
+    padding: .5em;
+}
+
+@media (max-width: 340px) {
+    body {
+        font-size: .7em;
+    }
+}
+
+/* card */
+section .card {
+    background-color: var(--bg-clr-secondary);
+    width: clamp(200px, 90vw, 600px);
+    margin: 0 auto;
+    border-radius: .7em;
+    position: relative;
+}
+
+section .card .card-header {
+    border-radius: .8em .8em 0 0;
+    background-color: var(--bg-clr-primary);
+    border: solid 2px var(--bg-clr-secondary);
+    display: flex;
+    align-items: center;
+}
+
+section .card .card-header .card-title {
+    padding: .5em 1em;
+    flex-grow: 1;
+}
+
+section .card .card-header .return {
+    height: 36px;
+    padding: .1em;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+section .card .card-header .return:active {
+    background-color: var(--bg-clr-third);
+}
+
+section .card .card-header .return img {
+    height: 100%;
+}
+
+section .card .card-content {
+    padding: .5em;
+}
+
+section .card .card-content .video-data {
+    display: flex;
+    margin-bottom: 1em;
+    border-bottom: solid 1px;
+}
+
+section .card .card-content .video-data .thumbnail {
+    margin-right: .5em;
+    width: 40%;
+    aspect-ratio: 5/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .card .card-content .video-data .thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+section .card .card-content .video-data .title-duration {
+    flex-grow: 1;
+}
+
+section .card .card-content .video-data .title-duration div {
+    padding: .5em;
+}
+
+section .card .card-content .video-formats .cta {
+    margin-bottom: .5em;
+}
+
+section .card .card-content .video-formats .btns {
+    display: flex;
+}
+
+section .card .card-content .video-formats .btns .btn {
+    padding: 1em;
+    flex-grow: 1;
+    text-align: center;
+    margin-right: .5em;
+    cursor: pointer;
+    user-select: none;
+}
+
+section .card .card-content .video-formats .btns .mp4-btn {
+    background-color: var(--btn-mp4-normal-state);
+    transition: background-color .1s ease-out;
+}
+
+section .card .card-content .video-formats .btns .mp4-btn:active {
+    background-color: var(--btn-mp4-active-state);
+}
+
+section .card .card-content .video-formats .btns .mp3-btn {
+    background-color: var(--btn-mp3-normal-state);
+    transition: background-color .1s ease-out;
+}
+
+section .card .card-content .video-formats .btns .mp3-btn:active {
+    background-color: var(--btn-mp3-active-state);
+}
+
+@media (max-width: 415px) {
+    section .card .card-content .video-data {
+        flex-direction: column;
+    }
+
+    section .card .card-content .video-data .thumbnail {
+        width: 100%;
+    }
+
+    section .card .card-content .video-formats .btns {
+        flex-direction: column;
+    }
+
+    section .card .card-content .video-formats .btns .btn {
+        margin-right: 0;
+        margin-bottom: .5em;
+    }
+}
+
+
+
+section .card .card-content .drop-down-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + .25em);
+    padding: 1em .5em;
+    border-radius: .5em;
+    background-color: var(--bg-clr-secondary);
+    width: 100%;
+    height: min-content;
+}
+
+
+section .card .card-content .drop-down-menu .download-option {
+    background-color: var(--btn-download-format-normal-state);
+    width: 100%;
+    border: solid 1px white;
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: min-content;
+    cursor: pointer;
+    border-radius: .2em;
+    margin-bottom: .5em;
+}
+
+section .card .card-content .drop-down-menu .download-option:active {
+    background-color: var(--btn-download-format-active-state);
+}
+
+section .card .card-content .mp3-list .download-option .format-data .quality {
+    grid-row: 1/3;
+}
+
+section .card .card-content .drop-down-menu .download-option .format-data {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: .5em;
+    column-gap: 1em;
+    height: min-content;
+    width: max-content;
+    font-weight: bold;
+    font-size: .8em;
+    text-transform: uppercase;
+}
+
+
+section .card .card-content .drop-down-menu .download-option .format-data .quality {
+    font-size: 1.3em;
+}
+
+section .card .card-content .drop-down-menu .download-option .format-data .extension {
+    font-weight: bolder;
+    border: solid 2px white;
+    width: min-content;
+    padding-inline: .5em;
+    border-radius: .2em;
+}
+
+section .card .card-content .drop-down-menu .download-option .icon-container {
+    max-height: 100%;
+}
+
+section .card .card-content .drop-down-menu .download-option .icon-container img {
+    min-height: 24px;
+    max-height: 48px;
+    height: 100%;
+}
+
+/* downloading card */
+section .card-downloading .card-content .video-data .file-details {
+    /* border: solid 1px; */
+}
+
+section .card-downloading .card-content .video-data .file-details span {
+    /* border: solid 1px; */
+}
+
+section .card-downloading .card-content .video-data .file-details span::after {
+    content: "";
+    border: solid 1px;
+    margin-left: .5em;
+}
+
+section .card-downloading .card-content .video-data .file-details span:last-child::after {
+    content: "";
+    border: none;
+    margin-left: 0;
+}
+
+section .card-downloading .card-content .download-progress-bar {}
+
+section .card-downloading .card-content .download-progress-bar .downloaded-size-ratio {
+    margin-bottom: .5em;
+}
+
+section .card-downloading .card-content .download-progress-bar .progress-bar {
+    background-color: var(--bg-clr-primary);
+    height: 20px;
+    border-radius: .5em;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: .5em;
+}
+
+section .card-downloading .card-content .download-progress-bar .progress-bar .percentage-level {
+    height: 100%;
+    width: 0.5%;
+    background-color: #fd0000;
+}
+
+section .card-downloading .card-content .download-progress-bar .progress-bar .percentage-level-text {
+    position: absolute;
+    line-height: 20px;
+}
+
+section .card-downloading .card-content .download-progress-bar .btn-download-file {
+    display: block;
+    cursor: pointer;
+    padding: .5em;
+    text-align: center;
+    background-color: var(--btn-download-file-normal-state);
+}
+
+section .card-downloading .card-content .download-progress-bar .btn-download-file:active {
+    background-color: var(--btn-download-file-active-state);
+}
